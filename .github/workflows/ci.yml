@@ -1,44 +1,26 @@
-name: Portfolio CI Pipeline
+name: CI Pipeline
 
 on:
   push:
     branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
+      - master
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Display Files
+      - name: List Files
         run: ls -la
 
-      - name: Check HTML Pages
-        run: |
-          test -f index.html
-          test -f about.html
-          test -f skills.html
-          test -f projects.html
-          test -f contact.html
+      - name: Check HTML File
+        run: test -f index.html
 
-      - name: Check CSS Folder
-        run: |
-          test -f css/style.css
-          test -f css/responsive.css
+      - name: Check CSS File
+        run: test -f style.css
 
-      - name: Check JavaScript
-        run: |
-          test -f js/script.js
-
-      - name: Success Message
-        run: echo "Portfolio CI Passed Successfull
+      - name: Success
+        run: echo "CI Pipeline Executed Successfully!"
